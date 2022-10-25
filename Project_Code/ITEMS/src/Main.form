@@ -150,64 +150,77 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbtnImportedBottleOfPerfume">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Bottle of Perfume (Imported)"/>
+            <Property name="text" type="java.lang.String" value="Bottle of Perfume "/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnImportedBottleOfPerfumeActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="200" width="190" height="40"/>
+              <AbsoluteConstraints x="10" y="230" width="190" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="jbtnImportedHeadachePills">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Headache Pills (Imported)"/>
+            <Property name="text" type="java.lang.String" value="Headache Pills "/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="210" y="200" width="170" height="40"/>
+              <AbsoluteConstraints x="210" y="230" width="170" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="jbtnImportedOil">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Oil (Imported)"/>
+            <Property name="text" type="java.lang.String" value="Oil "/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="390" y="200" width="190" height="40"/>
+              <AbsoluteConstraints x="390" y="230" width="190" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="jbtnImportedColaBox">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cola Box (Imported)"/>
+            <Property name="text" type="java.lang.String" value="Cola Box"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="210" y="250" width="170" height="40"/>
+              <AbsoluteConstraints x="210" y="280" width="170" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="jbtnImportedChocolateBox">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Chocolate Box (Imported)"/>
+            <Property name="text" type="java.lang.String" value="Chocolate Box "/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="250" width="190" height="40"/>
+              <AbsoluteConstraints x="10" y="280" width="190" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="jbtnImportedBooks">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Books (Imported)"/>
+            <Property name="text" type="java.lang.String" value="Books "/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="390" y="250" width="190" height="40"/>
+              <AbsoluteConstraints x="390" y="280" width="190" height="40"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelImportedGoods">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Imported Goods"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="220" y="200" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -311,7 +324,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Remove "/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
-            <Property name="actionCommand" type="java.lang.String" value="Remove "/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnRemoveActionPerformed"/>

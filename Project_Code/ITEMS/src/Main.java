@@ -1,3 +1,13 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +24,9 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        CreateDb();
+        Create_goods_table();
+        initialize_goods_table();
     }
 
     /**
@@ -41,6 +54,7 @@ public class Main extends javax.swing.JFrame {
         jbtnImportedColaBox = new javax.swing.JButton();
         jbtnImportedChocolateBox = new javax.swing.JButton();
         jbtnImportedBooks = new javax.swing.JButton();
+        jLabelImportedGoods = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableReceipt = new javax.swing.JTable();
         jPanelOperation = new javax.swing.JPanel();
@@ -109,28 +123,32 @@ public class Main extends javax.swing.JFrame {
         });
         jPanelProducts.add(jbtnBottleOfPerfume, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 190, 40));
 
-        jbtnImportedBottleOfPerfume.setText("Bottle of Perfume (Imported)");
+        jbtnImportedBottleOfPerfume.setText("Bottle of Perfume ");
         jbtnImportedBottleOfPerfume.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnImportedBottleOfPerfumeActionPerformed(evt);
             }
         });
-        jPanelProducts.add(jbtnImportedBottleOfPerfume, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 190, 40));
+        jPanelProducts.add(jbtnImportedBottleOfPerfume, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 190, 40));
 
-        jbtnImportedHeadachePills.setText("Headache Pills (Imported)");
-        jPanelProducts.add(jbtnImportedHeadachePills, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 170, 40));
+        jbtnImportedHeadachePills.setText("Headache Pills ");
+        jPanelProducts.add(jbtnImportedHeadachePills, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 170, 40));
 
-        jbtnImportedOil.setText("Oil (Imported)");
-        jPanelProducts.add(jbtnImportedOil, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 190, 40));
+        jbtnImportedOil.setText("Oil ");
+        jPanelProducts.add(jbtnImportedOil, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 190, 40));
 
-        jbtnImportedColaBox.setText("Cola Box (Imported)");
-        jPanelProducts.add(jbtnImportedColaBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 170, 40));
+        jbtnImportedColaBox.setText("Cola Box");
+        jPanelProducts.add(jbtnImportedColaBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 170, 40));
 
-        jbtnImportedChocolateBox.setText("Chocolate Box (Imported)");
-        jPanelProducts.add(jbtnImportedChocolateBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 190, 40));
+        jbtnImportedChocolateBox.setText("Chocolate Box ");
+        jPanelProducts.add(jbtnImportedChocolateBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 190, 40));
 
-        jbtnImportedBooks.setText("Books (Imported)");
-        jPanelProducts.add(jbtnImportedBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 190, 40));
+        jbtnImportedBooks.setText("Books ");
+        jPanelProducts.add(jbtnImportedBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 190, 40));
+
+        jLabelImportedGoods.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelImportedGoods.setText("Imported Goods");
+        jPanelProducts.add(jLabelImportedGoods, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
 
         getContentPane().add(jPanelProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 600, 330));
 
@@ -179,7 +197,6 @@ public class Main extends javax.swing.JFrame {
         jbtnRemove.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jbtnRemove.setText("Remove ");
         jbtnRemove.setToolTipText("");
-        jbtnRemove.setActionCommand("Remove ");
         jbtnRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnRemoveActionPerformed(evt);
@@ -232,7 +249,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnResetActionPerformed
 
     private void jbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExitActionPerformed
-                          
+               this.dispose();      //close window                    
     }//GEN-LAST:event_jbtnExitActionPerformed
 
     private void jbtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPrintActionPerformed
@@ -305,7 +322,107 @@ public class Main extends javax.swing.JFrame {
         });
     }
 
+        //create dataBase : goods_db if it is not exist
+        //initialization function
+    public static void CreateDb() {
+        String url = "jdbc:mysql://localhost";
+        String username = "root";
+        String password = "root";
+        String sql = "CREATE DATABASE IF NOT EXISTS goods_db";
+
+        try (Connection conn = DriverManager.getConnection(url, username, password);
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.execute();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+        //create table : goods if it is not exist
+        //initialization function
+    public static void Create_goods_table() {
+
+        String DB_URL = "jdbc:mysql://localhost/goods_db";
+        String USER = "root";
+        String PASS = "root";
+        // Open a connection
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+                Statement stmt = conn.createStatement();) {
+            String sql = "CREATE TABLE IF NOT EXISTS goods "
+                    + "(id int NOT NULL AUTO_INCREMENT, "
+                    + " name varchar(35) NOT NULL, "
+                    + " price float NOT NULL, "
+                    + " tax_class varchar(35) DEFAULT NULL, "
+                    + " PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3";
+
+            stmt.executeUpdate(sql);
+            System.out.println("the table goodds has been created successfully...");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+       public static void initialize_goods_table() {
+        String[] names = {"Chocolate Bar", "Book", "CD", "Chocolate Box", "Oil", "Cola", "Bottle of Perfume", "Headache Pills", "Cola Box", "Bottle of Perfume", "Headache Pills ", "Oil", "Chocolate Box", "Cola Box", "Books"};
+        float[] prices = {10, 11, 12, 13, 10, 11, 12, 13, 10, 11, 12, 13, 10, 11, 12};
+        String[] tax_classes = {"free_tax", "internal", "internal", "internal", "internal", "internal", "internal", "internal", "internal", "imported", "imported", "imported", "imported", "imported", "imported"};
+        
+        String DB_URL = "jdbc:mysql://localhost/goods_db";
+        String USER = "root";
+        String PASS = "root";
+        boolean resault = check_if_empty_goods_table();
+        
+        if (resault) {
+            Connection con;
+            PreparedStatement pst;
+            String sql = "INSERT INTO goods "
+                    + "( name , price , tax_class)"
+                    + "VALUES(? , ? , ?)";
+            for (int i = 0; i < names.length; i++) {
+                try {
+                    con = DriverManager.getConnection(DB_URL, USER, PASS);
+                    pst = con.prepareStatement(sql);
+
+                    pst.setString(1, names[i]);
+                    pst.setFloat(2, prices[i]);
+                    pst.setString(3, tax_classes[i]);
+                    pst.executeUpdate();
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+  public static boolean check_if_empty_goods_table(){
+              boolean res = false;
+        String DB_URL = "jdbc:mysql://localhost/goods_db";
+        String USER = "root";
+        String PASS = "root";
+        Connection con;
+        PreparedStatement pst;
+        ResultSet rst;
+        try {
+            con = (Connection) DriverManager.getConnection(DB_URL, USER, PASS);
+            String sql = "SELECT * FROM goods";
+            pst = con.prepareStatement(sql);
+            rst = pst.executeQuery();
+
+            if (rst.next()) { // check if exist more at least one row
+                res = false;
+            } else {
+                res = true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return res;
+  
+  }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabelImportedGoods;
     private javax.swing.JLabel jLabelReceipt;
     private javax.swing.JLabel jLabelSalesTaxes;
     private javax.swing.JLabel jLabelTotal;
