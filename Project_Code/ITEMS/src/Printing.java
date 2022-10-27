@@ -9,32 +9,28 @@ import java.text.DecimalFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
-
 /**
  *
  * @author moham
  */
 public class Printing extends javax.swing.JFrame {
 
-    
     public Printing() {
-      
+
     }
     List<String> names_temp;
     List<Integer> quantity_temp;
     List<Float> prices_temp;
     private static final DecimalFormat df = new DecimalFormat("0.00");
-    
 
     public Printing(List<String> names_temp, List<Integer> quantity_temp, List<Float> prices_temp, float total_tax, float total) {
         initComponents();
-        
+
         this.names_temp = names_temp;
         this.quantity_temp = quantity_temp;
         this.prices_temp = prices_temp;
 
-       loop_on_products(total_tax, total);
+        loop_on_products(total_tax, total);
 
     }
 
@@ -61,8 +57,8 @@ public class Printing extends javax.swing.JFrame {
             jTextArea2.append("name : " + p_name + " quantity : " + p_quantity + " price with tax : " + p_final_price + "\n");
         }
         jTextArea2.append("*****************************************\n");
-        jTextArea2.append("total tax value : " +  String.format("%.2f", tax) + "\n");
-        jTextArea2.append("total money : " +  String.format("%.2f", total));
+        jTextArea2.append("total tax value : " + String.format("%.2f", tax) + "\n");
+        jTextArea2.append("total money : " + String.format("%.2f", total));
     }
 
     public int get_id(String names[], String name) {
@@ -75,6 +71,7 @@ public class Printing extends javax.swing.JFrame {
         return -1;
 
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -179,7 +176,7 @@ public class Printing extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         PrinterJob printerJob = PrinterJob.getPrinterJob();
+        PrinterJob printerJob = PrinterJob.getPrinterJob();
         printerJob.setJobName("print message configuaration");
         printerJob.setPrintable(new Printable() {
             @Override

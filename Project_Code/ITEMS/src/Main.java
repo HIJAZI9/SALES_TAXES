@@ -366,38 +366,48 @@ public class Main extends javax.swing.JFrame {
                 claculate_sales_tax();
                 claculate_total();
             } else {
-                JOptionPane.showMessageDialog(this, " please select one row firstly , to remove it");
+                //Error Message for not selected row
+                JOptionPane.showMessageDialog(this, " please select one row firstly , to remove it"); 
             }
         } else {
+            //Error Message if jtable is empty
             JOptionPane.showMessageDialog(this, " can not delete , the table is empty");
         }
     }//GEN-LAST:event_jbtnRemoveActionPerformed
-
+        
     private void jTextFieldSalesTaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSalesTaxActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextFieldSalesTaxActionPerformed
-
+        /**
+         * Create CD  Button
+         */
     private void jbtnCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCDActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(2, model);
         claculate_sales_tax();
         claculate_total();
     }//GEN-LAST:event_jbtnCDActionPerformed
-
+        /**
+         * Create Cola  Button
+         */
     private void jbtnColaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnColaActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(5, model);
         claculate_sales_tax();
         claculate_total();
     }//GEN-LAST:event_jbtnColaActionPerformed
-
+        /**
+         * Create ColaBox  Button
+         */
     private void jbtnColaBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnColaBoxActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(8, model);
         claculate_sales_tax();
         claculate_total();
     }//GEN-LAST:event_jbtnColaBoxActionPerformed
-
+        /**
+         * Create Bottle Of Perfume  Button
+         */
     private void jbtnBottleOfPerfumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBottleOfPerfumeActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(6, model);
@@ -405,77 +415,99 @@ public class Main extends javax.swing.JFrame {
         claculate_total();
     }//GEN-LAST:event_jbtnBottleOfPerfumeActionPerformed
 
-
+        /**
+         * Create Chocolate Bar  Button
+         */
     private void jbtnChocolateBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnChocolateBarActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(0, model);
         claculate_sales_tax();
         claculate_total();
     }//GEN-LAST:event_jbtnChocolateBarActionPerformed
-
+       /**
+         * Create Book  Button
+         */
     private void jbtnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBookActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(1, model);
         claculate_sales_tax();
         claculate_total();
     }//GEN-LAST:event_jbtnBookActionPerformed
-
+        /**
+         * Create Chocolate Box  Button
+         */
     private void jbtnChocolateBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnChocolateBoxActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(3, model);
         claculate_sales_tax();
         claculate_total();
     }//GEN-LAST:event_jbtnChocolateBoxActionPerformed
-
+        /**
+         * Create Oil Box  Button
+         */
     private void jbtnOilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnOilActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(4, model);
         claculate_sales_tax();
         claculate_total();
     }//GEN-LAST:event_jbtnOilActionPerformed
-
+        /**
+         * Create Headache Pills   Button
+         */
     private void jbtnHeadachePillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnHeadachePillsActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(7, model);
         claculate_sales_tax();
         claculate_total();
     }//GEN-LAST:event_jbtnHeadachePillsActionPerformed
-
+        /**
+         * Create Imported Headache Pills   Button
+         */
     private void jbtnImportedHeadachePillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportedHeadachePillsActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(10, model);
         claculate_sales_tax();
         claculate_total();
     }//GEN-LAST:event_jbtnImportedHeadachePillsActionPerformed
-
+        /**
+         * Create Imported OIL   Button
+         */
     private void jbtnImportedOilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportedOilActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(11, model);
         claculate_sales_tax();
         claculate_total();
     }//GEN-LAST:event_jbtnImportedOilActionPerformed
-
+        /**
+         * Create Imported Chocolate Box   Button
+         */
     private void jbtnImportedChocolateBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportedChocolateBoxActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(12, model);
         claculate_sales_tax();
         claculate_total();
     }//GEN-LAST:event_jbtnImportedChocolateBoxActionPerformed
-
+        /**
+         * Create Imported Cola Box   Button
+         */
     private void jbtnImportedColaBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportedColaBoxActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(13, model);
         claculate_sales_tax();
         claculate_total();
     }//GEN-LAST:event_jbtnImportedColaBoxActionPerformed
-
+        /**
+         * Create Imported Books Button
+         */
     private void jbtnImportedBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportedBooksActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(14, model);
         claculate_sales_tax();
         claculate_total();
     }//GEN-LAST:event_jbtnImportedBooksActionPerformed
-
+        /**
+         * Create Bottle Of Perfume Button
+         */
     private void jbtBottelOfParfumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBottelOfParfumeActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
         Main.add_product(9, model);
@@ -516,6 +548,10 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
+                /**
+                * change Application Icon and adding a Title 'selling Application'
+                */
                 Main inter = new Main();
 
                 ImageIcon icon = null;
@@ -529,7 +565,7 @@ public class Main extends javax.swing.JFrame {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                /////////
+                ////////7
                 inter.setIconImage(icon.getImage());
                 inter.setTitle("selling application");
 
