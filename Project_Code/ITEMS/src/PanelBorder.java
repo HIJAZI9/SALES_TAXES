@@ -1,12 +1,10 @@
 
+import java.awt.Color;
+import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 
 /**
  *
@@ -14,14 +12,32 @@ import java.awt.RenderingHints;
  */
 public class PanelBorder extends javax.swing.JPanel {
 
+     private Color color1;
+    private Color color2;
     /**
      * Creates new form PanelBorder
      */
     public PanelBorder() {
         initComponents();
         setOpaque(false);
+        color1 = Color.BLACK;
+        color2 = Color.WHITE;
+    }
+     public Color getColor1() {
+        return color1;
     }
 
+    public void setColor1(Color color1) {
+        this.color1 = color1;
+    }
+
+    public Color getColor2() {
+        return color2;
+    }
+
+    public void setColor2(Color color2) {
+        this.color2 = color2;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,13 +60,16 @@ public class PanelBorder extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     @Override
     protected void paintComponent(Graphics grphcs) {
-        Graphics2D g2= (Graphics2D)grphcs; 
+        Graphics2D g2 = (Graphics2D) grphcs;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setColor(getBackground());
-        g2.fillRoundRect(0,0 , getWidth(),getHeight() , 15 , 15);
-        
+        GradientPaint g = new GradientPaint(0, 0, color1, 0, getHeight(), color2);
+        g2.setPaint(g);
+
+        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
+        g2.setColor(new Color(255, 255, 255, 50));
+        g2.fillOval((getWidth() - getHeight() / 2), 10, getHeight(), getHeight());
+        g2.fillOval((getWidth() - (getHeight() / 2) - 20), getHeight() / 2 + 20, getHeight(), getHeight());
         super.paintComponent(grphcs); //To change body of generated methods, choose Tools | Templates.
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

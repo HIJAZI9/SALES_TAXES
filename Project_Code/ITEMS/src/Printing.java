@@ -1,5 +1,13 @@
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+import java.text.DecimalFormat;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 
 
@@ -16,20 +24,21 @@ public class Printing extends javax.swing.JFrame {
     List<String> names_temp;
     List<Integer> quantity_temp;
     List<Float> prices_temp;
-
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     
 
-    public Printing(List<String> names_temp, List<Integer> quantity_temp, List<Float> prices_temp) {
+    public Printing(List<String> names_temp, List<Integer> quantity_temp, List<Float> prices_temp, float total_tax, float total) {
         initComponents();
         
         this.names_temp = names_temp;
         this.quantity_temp = quantity_temp;
         this.prices_temp = prices_temp;
 
-        loop_on_products();
+       loop_on_products(total_tax, total);
+
     }
 
-    public void loop_on_products() {
+    public void loop_on_products(float tax, float total) {
         for (int i = 0; i < names_temp.size(); i++) {
             String p_name = names_temp.get(i);
             int p_quantity = quantity_temp.get(i);
@@ -48,8 +57,12 @@ public class Printing extends javax.swing.JFrame {
                 tax_value = 0.0f;
             }
             float p_final_price = p_price * p_quantity + p_price * p_quantity * tax_value;
-            jTextArea1.append("name : " + p_name + " quantity : " + p_quantity + " price with tax : " + p_final_price + "\n");
+            //p_final_price = Float.parseFloat(df.format(p_final_price).trim());
+            jTextArea2.append("name : " + p_name + " quantity : " + p_quantity + " price with tax : " + p_final_price + "\n");
         }
+        jTextArea2.append("*****************************************\n");
+        jTextArea2.append("total tax value : " +  String.format("%.2f", tax) + "\n");
+        jTextArea2.append("total money : " +  String.format("%.2f", total));
     }
 
     public int get_id(String names[], String name) {
@@ -71,22 +84,127 @@ public class Printing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelBorder2 = new PanelBorder();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+
+        panelBorder2.setColor1(new java.awt.Color(139, 188, 204));
+        panelBorder2.setColor2(new java.awt.Color(92, 46, 127));
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jButton2.setText("Print");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Exit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBorder2Layout = new javax.swing.GroupLayout(panelBorder2);
+        panelBorder2.setLayout(panelBorder2Layout);
+        panelBorder2Layout.setHorizontalGroup(
+            panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorder2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(panelBorder2Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        panelBorder2Layout.setVerticalGroup(
+            panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorder2Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(27, 27, 27))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+            .addComponent(panelBorder2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 471, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelBorder2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         PrinterJob printerJob = PrinterJob.getPrinterJob();
+        printerJob.setJobName("print message configuaration");
+        printerJob.setPrintable(new Printable() {
+            @Override
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                if (pageIndex > 0) {
+                    return Printable.NO_SUCH_PAGE;
+                }
+                Graphics2D graphics2d = (Graphics2D) graphics;
+                graphics2d.translate(pageFormat.getImageableX() * 2, pageFormat.getImageableY() * 2);
+                graphics2d.scale(1, 1);
+                jPanel1.paint(graphics2d);
+                return Printable.PAGE_EXISTS;
+            }
+        });
+
+        boolean returningResault = printerJob.printDialog();
+        if (returningResault) {
+            try {
+                printerJob.print();
+            } catch (PrinterException printerException) {
+                JOptionPane.showMessageDialog(this, "printing Eror : " + printerException.getMessage());
+
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,5 +242,11 @@ public class Printing extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea2;
+    private PanelBorder panelBorder2;
     // End of variables declaration//GEN-END:variables
 }
