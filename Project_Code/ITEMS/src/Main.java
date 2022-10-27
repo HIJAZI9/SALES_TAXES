@@ -45,9 +45,9 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
-        CreateDb();
-        Create_goods_table();
-        initialize_goods_table();
+       // CreateDb();
+       // Create_goods_table();
+       // initialize_goods_table();
     }
 
     /**
