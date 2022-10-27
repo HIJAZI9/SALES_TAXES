@@ -13,7 +13,7 @@ sales tax.
 
 
 
-I used 
+I used <br />
 1-Apache NetBeans IDE 15 <br />
 2-XAMPP Control Panel -->Mysql<br />
 
@@ -24,3 +24,11 @@ Print Button --> print out the receipt details <br />
 Reset Button --> The Table will be empty<br />
 Remove Button--> remove selected Row <br />
 Exit  Button -->to close the Application<br />
+
+For XAMPP, I signed a database via MySQL, I wanted to add new features to the program in the future such as delete and add.There are some functions in code source.<br />
+which are :-<br />
+       // CreateDb(); <br />
+       // Create_goods_table();<br />
+       // initialize_goods_table();<br />
+       <br />
+       if you want to run the code source , open ITEMS folder in Apache NetBeans IDE then run Main.class<br />
