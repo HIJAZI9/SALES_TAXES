@@ -5,13 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 
 /**
  *
@@ -19,6 +20,10 @@ import java.util.logging.Logger;
  */
 public class Main extends javax.swing.JFrame {
 
+    //public static int [] id = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15} ;
+    public static String[] names = {"Chocolate Bar", "Book", "CD", "Chocolate Box", "Oil", "Cola", "Bottle of Perfume", "Packet Of Headache Pills", "Cola Box", "Imported Bottle of Perfume", "Imported Headache Pills ", "Imported Oil", "Imported Chocolate Box", "Imported Cola Box", "Imported Books"};
+    public static float[] prices = {0.85f, 12.49f, 14.99f, 10.0f, 4.0f, 2.5f, 18.99f, 9.75f, 11.0f, 27.99f, 9.75f, 6.0f, 10.f, 13.0f, 13.5f};
+    public static String[] tax_classes = {"free_tax", "free_tax", "imported", "free_tax", "free_tax", "internal", "free_tax", "free_tax", "internal_imported", "imported", "imported", "imported", "imported", "imported", "imported"};
     /**
      * Creates new form salesTaxes
      */
@@ -85,15 +90,35 @@ public class Main extends javax.swing.JFrame {
         jPanelProducts.add(jbtnCD, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 190, 40));
 
         jbtnBook.setText("Book");
+        jbtnBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnBookActionPerformed(evt);
+            }
+        });
         jPanelProducts.add(jbtnBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 170, 40));
 
         jbtnChocolateBar.setText("Chocolate Bar");
+        jbtnChocolateBar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnChocolateBarActionPerformed(evt);
+            }
+        });
         jPanelProducts.add(jbtnChocolateBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 190, 40));
 
         jbtnChocolateBox.setText("Chocolate Box");
+        jbtnChocolateBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnChocolateBoxActionPerformed(evt);
+            }
+        });
         jPanelProducts.add(jbtnChocolateBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 190, 40));
 
         jbtnOil.setText("Oil");
+        jbtnOil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnOilActionPerformed(evt);
+            }
+        });
         jPanelProducts.add(jbtnOil, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 170, 40));
 
         jbtnCola.setText("Cola");
@@ -105,6 +130,11 @@ public class Main extends javax.swing.JFrame {
         jPanelProducts.add(jbtnCola, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 190, 40));
 
         jbtnHeadachePills.setText("Headache Pills");
+        jbtnHeadachePills.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnHeadachePillsActionPerformed(evt);
+            }
+        });
         jPanelProducts.add(jbtnHeadachePills, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 170, 40));
 
         jbtnColaBox.setText("Cola Box");
@@ -132,18 +162,43 @@ public class Main extends javax.swing.JFrame {
         jPanelProducts.add(jbtnImportedBottleOfPerfume, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 190, 40));
 
         jbtnImportedHeadachePills.setText("Headache Pills ");
+        jbtnImportedHeadachePills.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnImportedHeadachePillsActionPerformed(evt);
+            }
+        });
         jPanelProducts.add(jbtnImportedHeadachePills, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 170, 40));
 
         jbtnImportedOil.setText("Oil ");
+        jbtnImportedOil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnImportedOilActionPerformed(evt);
+            }
+        });
         jPanelProducts.add(jbtnImportedOil, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 190, 40));
 
         jbtnImportedColaBox.setText("Cola Box");
+        jbtnImportedColaBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnImportedColaBoxActionPerformed(evt);
+            }
+        });
         jPanelProducts.add(jbtnImportedColaBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 170, 40));
 
         jbtnImportedChocolateBox.setText("Chocolate Box ");
+        jbtnImportedChocolateBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnImportedChocolateBoxActionPerformed(evt);
+            }
+        });
         jPanelProducts.add(jbtnImportedChocolateBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 190, 40));
 
         jbtnImportedBooks.setText("Books ");
+        jbtnImportedBooks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnImportedBooksActionPerformed(evt);
+            }
+        });
         jPanelProducts.add(jbtnImportedBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 190, 40));
 
         jLabelImportedGoods.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -245,7 +300,8 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnResetActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        model.setRowCount(0);
     }//GEN-LAST:event_jbtnResetActionPerformed
 
     private void jbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExitActionPerformed
@@ -253,11 +309,39 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnExitActionPerformed
 
     private void jbtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPrintActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        int rows_n = model.getRowCount();
+
+        List<String> names_temp = new ArrayList<String>();
+        List<Integer> quantity_temp = new ArrayList<Integer>();
+        List<Float> prices_temp = new ArrayList<Float>();
+
+        for (int i = 0; i < rows_n; i++) {  // Loop through the rows
+
+            names_temp.add((String) model.getValueAt(i, 0));
+
+            quantity_temp.add((Integer) model.getValueAt(i, 1));
+
+            prices_temp.add((Float) model.getValueAt(i, 2));
+        }
+
+        Printing print = new Printing(names_temp , quantity_temp , prices_temp);
+        print.setVisible(true);
     }//GEN-LAST:event_jbtnPrintActionPerformed
 
     private void jbtnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRemoveActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        int rows_count = model.getRowCount();
+        if (rows_count > 0) {
+            int index_row = jTableReceipt.getSelectedRow();
+            if (index_row != -1) {
+                model.removeRow(index_row);
+            } else {
+                JOptionPane.showMessageDialog(this, " please select one row firstly , to remove it");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, " can not delete , the table is empty");
+        }
     }//GEN-LAST:event_jbtnRemoveActionPerformed
 
     private void jTextFieldSalesTaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSalesTaxActionPerformed
@@ -265,24 +349,78 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSalesTaxActionPerformed
 
     private void jbtnCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCDActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        Main.add_product(2, model);
     }//GEN-LAST:event_jbtnCDActionPerformed
 
     private void jbtnColaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnColaActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        Main.add_product(5, model);
     }//GEN-LAST:event_jbtnColaActionPerformed
 
     private void jbtnColaBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnColaBoxActionPerformed
-        // TODO add your handling code here:
+       DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        Main.add_product(8, model);
     }//GEN-LAST:event_jbtnColaBoxActionPerformed
 
     private void jbtnBottleOfPerfumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBottleOfPerfumeActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        Main.add_product(6, model);
     }//GEN-LAST:event_jbtnBottleOfPerfumeActionPerformed
 
     private void jbtnImportedBottleOfPerfumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportedBottleOfPerfumeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnImportedBottleOfPerfumeActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        Main.add_product(9, model);    }//GEN-LAST:event_jbtnImportedBottleOfPerfumeActionPerformed
+
+    private void jbtnChocolateBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnChocolateBarActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        Main.add_product(0, model);
+    }//GEN-LAST:event_jbtnChocolateBarActionPerformed
+
+    private void jbtnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBookActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        Main.add_product(1, model);
+    }//GEN-LAST:event_jbtnBookActionPerformed
+
+    private void jbtnChocolateBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnChocolateBoxActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        Main.add_product(3, model);
+    }//GEN-LAST:event_jbtnChocolateBoxActionPerformed
+
+    private void jbtnOilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnOilActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        Main.add_product(4, model);
+    }//GEN-LAST:event_jbtnOilActionPerformed
+
+    private void jbtnHeadachePillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnHeadachePillsActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        Main.add_product(7, model);
+    }//GEN-LAST:event_jbtnHeadachePillsActionPerformed
+
+    private void jbtnImportedHeadachePillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportedHeadachePillsActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        Main.add_product(10, model);
+    }//GEN-LAST:event_jbtnImportedHeadachePillsActionPerformed
+
+    private void jbtnImportedOilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportedOilActionPerformed
+       DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+       Main.add_product(11, model);
+    }//GEN-LAST:event_jbtnImportedOilActionPerformed
+
+    private void jbtnImportedChocolateBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportedChocolateBoxActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        Main.add_product(12, model);
+    }//GEN-LAST:event_jbtnImportedChocolateBoxActionPerformed
+
+    private void jbtnImportedColaBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportedColaBoxActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+                Main.add_product(13, model);
+    }//GEN-LAST:event_jbtnImportedColaBoxActionPerformed
+
+    private void jbtnImportedBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImportedBooksActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableReceipt.getModel();
+        Main.add_product(14, model);
+    }//GEN-LAST:event_jbtnImportedBooksActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,9 +501,7 @@ public class Main extends javax.swing.JFrame {
     }
     
        public static void initialize_goods_table() {
-        String[] names = {"Chocolate Bar", "Book", "CD", "Chocolate Box", "Oil", "Cola", "Bottle of Perfume", "Headache Pills", "Cola Box", "Bottle of Perfume", "Headache Pills ", "Oil", "Chocolate Box", "Cola Box", "Books"};
-        float[] prices = {10, 11, 12, 13, 10, 11, 12, 13, 10, 11, 12, 13, 10, 11, 12};
-        String[] tax_classes = {"free_tax", "internal", "internal", "internal", "internal", "internal", "internal", "internal", "internal", "imported", "imported", "imported", "imported", "imported", "imported"};
+        
         
         String DB_URL = "jdbc:mysql://localhost/goods_db";
         String USER = "root";
@@ -420,7 +556,33 @@ public class Main extends javax.swing.JFrame {
         return res;
   
   }
-    
+        private static void add_product(int index, DefaultTableModel model) {
+
+        String[] names_temp = new String[16]; //store names of products that exist in jtable
+        int rows_n = model.getRowCount();
+        boolean founded_in_table = false;
+        if (rows_n == 0) {
+            model.addRow(new Object[]{names[index], 1, prices[index]});
+        } else {
+            //search for product , then get row's index
+            for (int i = 0; i < rows_n; i++) {  // Loop through the rows
+
+                names_temp[i] = (String) model.getValueAt(i, 0);
+            }
+            for (int i = 0; i < names_temp.length; i++) {
+                if (names[index].equals(names_temp[i])) {
+                    int new_quantity = (int) model.getValueAt(i, 1) + 1;
+                    float new_price = (float) model.getValueAt(i, 2) + prices[index];
+                    model.setValueAt(new_quantity, i, 1); //edit quantity
+                    model.setValueAt(new_price, i, 2); //edit price
+                    founded_in_table = true;
+                }
+            }
+            if (!founded_in_table) {
+                model.addRow(new Object[]{names[index], 1, prices[index]});
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelImportedGoods;
     private javax.swing.JLabel jLabelReceipt;
