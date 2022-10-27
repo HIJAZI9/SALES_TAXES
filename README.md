@@ -14,13 +14,13 @@ sales tax.
 
 
 I used 
-1-Apache NetBeans IDE 15 
-2-XAMPP Control Panel -->Mysql
+1-Apache NetBeans IDE 15 <br />
+2-XAMPP Control Panel -->Mysql<br />
 
-For Download the Application , you have to open SellingAppSetup folder , then you will find file with .exe extension. 
-when you download it , you can click on Buttons to buy a Products , It is displayed in a table, consisting of the product name, quantity, price and finally the last column to know the price of the added tax.
+For Download the Application , you have to open SellingAppSetup folder , then you will find file with .exe extension. <br />
+when you download it , you can click on Buttons to buy a Products , It is displayed in a table, consisting of the product name, quantity, price and finally the last column to know the price of the added tax.<br />
 
-Print Button --> print out the receipt details 
-Reset Button --> The Table will be empty
-Remove Button--> remove selected Row 
-Exit  Button -->to close the Application
+Print Button --> print out the receipt details <br />
+Reset Button --> The Table will be empty<br />
+Remove Button--> remove selected Row <br />
+Exit  Button -->to close the Application<br />
