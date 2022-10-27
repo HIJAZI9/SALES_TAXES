@@ -11,3 +11,16 @@ and the total amounts of sales taxes paid. The rounding rules for sales tax are 
 rate of n%, a shelf price of p contains (np/100 rounded up to the nearest 0.05) amount of
 sales tax.
 
+
+
+I used 
+1-Apache NetBeans IDE 15 
+2-XAMPP Control Panel -->Mysql
+
+For Download the Application , you have to open SellingAppSetup folder , then you will find file with .exe extension. 
+when you download it , you can click on Buttons to buy a Products , It is displayed in a table, consisting of the product name, quantity, price and finally the last column to know the price of the added tax.
+
+Print Button --> print out the receipt details 
+Reset Button --> The Table will be empty
+Remove Button--> remove selected Row 
+Exit  Button -->to close the Application
